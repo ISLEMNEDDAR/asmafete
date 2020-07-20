@@ -7,7 +7,7 @@ class Login extends Component {
         return (
             <SafeAreaView>
                 <View>
-                    <Text>Home</Text>
+                    
                 </View>
             </SafeAreaView>
         );

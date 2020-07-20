@@ -4,8 +4,8 @@ import {
   TouchableOpacity, // Pressable container
   View, // Container component
 } from 'react-native';
-import styles from './style/blueButton';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Colors from "../constante/Colors";
 
 export default class ButtonBLue extends Component {
   render({onPress, width, icon, ...res} = this.props) {
@@ -42,4 +42,16 @@ export default class ButtonBLue extends Component {
       </TouchableOpacity>
     );
   }
+}
+const styles = {
+    button : {
+        borderRadius : 50,
+        justifyContent : "center",
+        alignItems : "center",
+        backgroundColor : Colors.$bluePrimary,
+    },
+    text : {
+        color: Colors.$wihtePrimary,
+        fontWeight: 'bold',
+    }
 }

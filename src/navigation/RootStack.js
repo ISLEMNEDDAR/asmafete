@@ -9,10 +9,10 @@ class RootStack extends Component {
         const RootList = createStackNavigator()
         return (
             <RootList.Navigator screenOptions={{headerShown: false}} headerMode='none'>
-                <RootList.Screen name={"FirstScreen"} component={FirstScreen}/>
-                <RootList.Screen name={"Login"} component={Login}/>
-                <RootList.Screen name={"Register"} component={RegisterUser}/>
                 <RootList.Screen name={"HomeStack"} component={HomeStack}/>
+                <RootList.Screen name={"Login"} component={Login}/>
+                <RootList.Screen name={"FirstScreen"} component={FirstScreen}/>
+                <RootList.Screen name={"Register"} component={RegisterUser}/>
             </RootList.Navigator>
         );
     }

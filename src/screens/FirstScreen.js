@@ -7,11 +7,12 @@ import TextUnderline from "../components/TextUnderline";
 
 class FirstScreen extends Component {
     goLogin = ()=>{
+        console.log("login to ")
         this.props.navigation.navigate("Login")
     };
 
     toRegister = ()=>{
-        this.props.navigation.navigate("Login")
+        this.props.navigation.navigate("Register")
     }
 
     render() {
@@ -26,8 +27,6 @@ class FirstScreen extends Component {
                             <Text style={styles.textLogo}> Asma Fete</Text>
                             <Text >Réserver votre Salle des fete en un clic</Text>
                         </View>
-
-
                     </View>
                     <View style={styles.containerAuth}>
                         <TextUnderline text={"conncter-vous ?"}  onPress={this.goLogin}/>
