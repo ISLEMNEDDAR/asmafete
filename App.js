@@ -7,34 +7,22 @@
  */
 
 import React, {Component} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
+import {persistor, store} from "./src/redux/store";
+import {Provider} from 'react-redux'
+import {PersistGate} from "redux-persist/integration/react";
+import 'react-native-gesture-handler';
+import {NavigationContainer} from "@react-navigation/native";
+import RootStack from "./src/navigation/RootStack";
+import {navigationRef} from "./src/navigation/RootNavigation";
 class App extends Component{
   render(){
     return(
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            <Root
-                ref={navigatorRef => {
-                  NavigationService.setTopLevelNavigator(navigatorRef);
-                }}/>
+            <NavigationContainer ref={navigationRef}>
+                <RootStack/>
+            </NavigationContainer>
           </PersistGate>
-
         </Provider>
     )
   }
