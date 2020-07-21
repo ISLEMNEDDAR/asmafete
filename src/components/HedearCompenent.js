@@ -6,9 +6,7 @@ import {
   View, // Container component
 } from 'react-native';
 import {Icon} from 'react-native-elements';
-import Colors from '../../constante/Colors';
 import LinearGradient from 'react-native-linear-gradient';
-import Menu, {MenuItem, MenuDivider} from 'react-native-material-menu';
 import {connect} from "react-redux";
 
 const HeaderComponent = (
@@ -28,14 +26,10 @@ const HeaderComponent = (
     iconRight,
     onPressRight,
     colorIconRight,
-    menuCom,
-      user
   } = this.props,
 ) => {
-  const menu = useRef();
 
-  const hideMenu = () => menu.current.hide();
-  const showMenu = () => menu.current.show();
+
 
   return (
     <LinearGradient
@@ -44,12 +38,6 @@ const HeaderComponent = (
       start={{x: 0, y: 0}}
       end={{x: 1, y: 0}}>
       <View style={styles.container}>
-        <Icon
-          name={iconCenter}
-          type="font-awesome"
-          size={sizeIconCenter}
-          color={colorIconCenter}
-        />
         <Text
           style={{
             fontSize: tailleFont,
@@ -68,46 +56,6 @@ const HeaderComponent = (
           underlayColor={'transparent'}
         />
       </View>
-      {menuCom ? (
-        <TouchableOpacity style={styles.iconRight}>
-          <Menu
-            ref={menu}
-            button={
-              <Icon
-                onPress={showMenu}
-                name={iconRight}
-                type="font-awesome"
-                //onPress={onPressRight}
-                color={colorIconRight}
-                underlayColor={'transparent'}
-              />
-            }>
-            <MenuItem
-              onPress={() => {
-                hideMenu();
-                onPressRight('ajouterami');
-              }}>
-              Ajouter Ami
-            </MenuItem>
-              <MenuDivider />
-              {
-                  user.user.is_doctor ? (
-
-                      <MenuItem
-                      onPress={() => {
-                  hideMenu();
-                  onPressRight('articles');
-              }}>
-                  Mes Articles
-                  </MenuItem>
-                  ):(
-                      <MenuDivider />
-                  )
-              }
-
-          </Menu>
-        </TouchableOpacity>
-      ) : (
         <TouchableOpacity style={styles.iconRight}>
           <View>
             <Icon
@@ -119,7 +67,7 @@ const HeaderComponent = (
             />
           </View>
         </TouchableOpacity>
-      )}
+
     </LinearGradient>
   );
 };
@@ -144,8 +92,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(
-    state => ({
-        user: state.user,
-    }),
-)(HeaderComponent);
+export default HeaderComponent

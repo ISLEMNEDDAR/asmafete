@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
-import Fetes from "../screens/Fetes/Fetes";
 import FormFete from "../screens/home/createfete/FormFete";
 import ChooseSalle from "../screens/home/createfete/ChooseSalle";
 import ChooseDecoration from "../screens/home/createfete/ChooseDecoration";

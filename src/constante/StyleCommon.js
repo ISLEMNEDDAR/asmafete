@@ -33,8 +33,14 @@ export default {
     margin10Vertical:{
         marginHorizontal : "10%"
     },
+    margin10Horizontal:{
+        marginVertical : "10%"
+    },
     centerTop : {
         justifyContent : "flex-start"
+    },
+    margintop : {
+        marginTop : 10
     },
 
 }
