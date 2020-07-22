@@ -4,11 +4,12 @@ import FirstScreen from "../screens/FirstScreen";
 import Login from "../screens/auth/Login";
 import RegisterUser from "../screens/auth/RegisterUser";
 import HomeStack from "./HomeStack";
+import MesFetes from "../screens/home/MesFetes";
 class RootStack extends Component {
     render() {
         const RootList = createStackNavigator()
         return (
-            <RootList.Navigator screenOptions={{headerShown: false}} headerMode='none' initialRouteName ="Register" >
+            <RootList.Navigator screenOptions={{headerShown: false}} headerMode='none' initialRouteName ="MesFetes" >
                 <RootList.Screen name={"HomeStack"} component={HomeStack}/>
                 <RootList.Screen name={"FirstScreen"} component={FirstScreen}/>
                 <RootList.Screen name={"Login"} component={Login}/>

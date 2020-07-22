@@ -12,7 +12,6 @@ import DateTimePicker from "react-native-modal-datetime-picker";
 import Colors from "../../../../constante/Colors";
 import {MultiPickerMaterialDialog} from "react-native-material-dialog";
 import ButtonBLue from "../../../../components/ButtonBLue";
-import {validateFete} from "../../../../utils/validationUtil";
 
 
 class FormCreateFete extends Component {

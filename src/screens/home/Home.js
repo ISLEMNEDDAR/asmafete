@@ -4,8 +4,6 @@ import {Text, View, Button, Image} from "react-native";
 import ButtonBLue from "../../components/ButtonBLue";
 import StyleCommon from "../../constante/StyleCommon";
 import assets from "../../assets/assets";
-import Colors from "../../constante/Colors";
-
 class Login extends Component {
 
     goCreateFete = ()=>{
@@ -14,8 +12,8 @@ class Login extends Component {
     MesFetes = ()=>{
         this.props.navigation.navigate("MesFetes")
     }
-    goProfile = ()=>{
-        this.props.navigation.navigate("SallesFetes")
+    Logout = ()=>{
+        this.props.navigation.replace("Login")
     }
     SallesFetes = ()=>{
         this.props.navigation.navigate("Profile")
@@ -58,13 +56,13 @@ class Login extends Component {
                             onPress={this.SallesFetes}
                         />
                         <ButtonBLue
-                            text="Profile"
+                            text="Déconnecter"
                             paddingTop={15}
                             paddingBottom={15}
                             paddingRight={16}
                             paddingLeft={16}
                             fontSize={14}
-                            onPress={this.goProfile}
+                            onPress={this.Logout}
                         />
                     </View>
 

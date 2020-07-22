@@ -4,7 +4,6 @@ import StyleCommon from "../../../constante/StyleCommon";
 import Colors from "../../../constante/Colors";
 import HeaderComponent from "../../../components/HedearCompenent";
 import FormCreateFete from "./formfete/FormCreateFete";
-import SinglePicker from "../../../components/SinglePicker";
 
 class FormFete extends Component {
 

@@ -3,6 +3,8 @@ import {SafeAreaView, Text, View} from "react-native";
 import StyleCommon from "../../constante/StyleCommon";
 import HeaderComponent from "../../components/HedearCompenent";
 import Colors from "../../constante/Colors";
+import {listFetes, listSalle} from "../../constante/Data";
+import ListFete from "./mesfetes/ListFete";
 
 class MesFetes extends Component {
     render() {
@@ -24,8 +26,8 @@ class MesFetes extends Component {
                     }}
                     colorIconBack={Colors.$wihtePrimary}
                 />
-                <View style={StyleCommon.container}>
-                    <Text>fsfd</Text>
+                <View style={[StyleCommon.container, {marginHorizontal : "5%"},StyleCommon.margin10Horizontal]}>
+                    <ListFete listFetes={listFetes} />
                 </View>
             </SafeAreaView>
         );

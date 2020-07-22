@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {SafeAreaView, ScrollView, Text, View} from "react-native";
+import {SafeAreaView, View} from "react-native";
 import StyleCommon from "../../../constante/StyleCommon";
 import HeaderComponent from "../../../components/HedearCompenent";
 import Colors from "../../../constante/Colors";
-import FormCreateFete from "./formfete/FormCreateFete";
 import ListSalle from "./formfete/LisTSalle";
 import {listSalle} from "../../../constante/Data";
 

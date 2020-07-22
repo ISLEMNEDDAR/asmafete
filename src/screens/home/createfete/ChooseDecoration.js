@@ -3,7 +3,6 @@ import {SafeAreaView, Text, View} from "react-native";
 import StyleCommon from "../../../constante/StyleCommon";
 import HeaderComponent from "../../../components/HedearCompenent";
 import Colors from "../../../constante/Colors";
-import ListSalle from "./formfete/LisTSalle";
 import {listDecoraton, listSalle} from "../../../constante/Data";
 import ListDecoration from "./formfete/ListDecoration";
 

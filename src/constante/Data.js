@@ -29,3 +29,10 @@ export const listDecoraton = [
     {"id":"1","prix":"4","name":"Andalous",},
     {"id":"1","prix":"5","name":"Andalous",},
 ]
+
+export const listFetes = [
+    {"id":"1","date":"15-08-2020","invite":300,"Wilaya": "Alger","commune": "Baraki","type":"mariage","isReserved":true,"heurs":"matin"},
+    {"id":"1","date":"15-08-2020","invite":300,"Wilaya": "Alger","commune": "Baraki","type":"mariage","isReserved":false,"heurs":"matin"},
+    {"id":"1","date":"15-08-2020","invite":300,"Wilaya": "Alger","commune": "Baraki","type":"mariage","isReserved":true,"heurs":"matin"},
+    {"id":"1","date":"15-08-2020","invite":300,"Wilaya": "Alger","commune": "Baraki","type":"mariage","isReserved":false,"heurs":"matin"},
+    {"id":"1","date":"15-08-2020","invite":300,"Wilaya": "Alger","commune": "Baraki","type":"mariage","isReserved":false,"heurs":"matin"}]

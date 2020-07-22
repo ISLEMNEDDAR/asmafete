@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {SafeAreaView} from "react-native-safe-area-context";
 import {Text, View,Image} from "react-native";
 import assets from "../assets/assets";
-import Colors from "../constante/Colors";
 import TextUnderline from "../components/TextUnderline";
 
 class FirstScreen extends Component {

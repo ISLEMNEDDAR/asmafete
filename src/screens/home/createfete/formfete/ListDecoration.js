@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import StyleCommon from "../../../../constante/StyleCommon";
 import {ScrollView, View} from "react-native";
-import Salle from "./Salle";
 import Deco from "./Deco";
 
 class ListDecoration extends Component {

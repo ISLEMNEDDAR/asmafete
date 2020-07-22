@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, Text, TouchableHighlight, TouchableNativeFeedback, View} from "react-native";
+import {Image, Text, TouchableHighlight, View} from "react-native";
 import assets from "../../../../assets/assets";
 import Colors from "../../../../constante/Colors";
 import * as navigationRef from "../../../../navigation/RootNavigation";
