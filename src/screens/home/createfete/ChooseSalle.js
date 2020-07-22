@@ -28,7 +28,7 @@ class ChooseSalle extends Component {
                     colorIconBack={Colors.$wihtePrimary}
                 />
                 <View style={[StyleCommon.container, {marginHorizontal : "5%"},StyleCommon.margin10Horizontal]}>
-                    <ListSalle listSalle={listSalle}/>
+                    <ListSalle listSalle={listSalle} />
                 </View>
             </SafeAreaView>
         );

@@ -2,8 +2,14 @@ import React, {Component} from 'react';
 import {Image, Text, TouchableHighlight, TouchableNativeFeedback, View} from "react-native";
 import assets from "../../../../assets/assets";
 import Colors from "../../../../constante/Colors";
+import * as navigationRef from "../../../../navigation/RootNavigation";
 
 class Salle extends Component {
+
+    Reserver = ()=>{
+        navigationRef.navigate("ChooseDecoration")
+    }
+
     render() {
         const salle = this.props.salle
         return (
@@ -33,7 +39,7 @@ class Salle extends Component {
                         <View style={{flex : 1,alignItems : "flex-end",justifyContent : "center"}}>
                             <TouchableHighlight
                                 style={{borderStyle : "solid",borderWidth : 1,padding : 8,borderColor : Colors.$redBootsrap,borderRadius : 10}}
-                                onPress={()=>{}}
+                                onPress={this.Reserver}
                             >
                                 <Text style={{fontSize : 16,fontWeight : "bold"}}>Réserver</Text>
                             </TouchableHighlight>
@@ -46,7 +52,7 @@ class Salle extends Component {
 }
 
 const styles = {
-    imageStyle : {flex : 1,resizeMode : "stretch"},
+    imageStyle : {height : 179,width : "100%",resizeMode : "stretch"},
     PriceStyle : {position : "absolute",justifyContent : "center",alignItems : "center", margin : "5%",borderColor : "#000",backgroundColor: "#000",borderRadius : 10},
     PriceTextStyle:{color : "#FFF",fontSize : 14,paddingVertical : 2},
     containerName : {position: "absolute",bottom : "5%",left : "5%"},

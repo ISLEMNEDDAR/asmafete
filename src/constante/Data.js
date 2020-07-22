@@ -22,3 +22,10 @@ export const listSalle = [
     {"id":"1","prix":"4","name":"Andalous","invite":300,"Wilaya": "Alger","commune": "Baraki","type":"salle de diner"},
     {"id":"1","prix":"5","name":"Andalous","invite":300,"Wilaya": "Alger","commune": "Baraki","type":"salle de diner"},
     ]
+export const listDecoraton = [
+    {"id":"1","prix":"1","name":"Andalous",},
+    {"id":"1","prix":"2","name":"Assinate",},
+    {"id":"1","prix":"3","name":"Andalous",},
+    {"id":"1","prix":"4","name":"Andalous",},
+    {"id":"1","prix":"5","name":"Andalous",},
+]

@@ -37,7 +37,8 @@ class FormCreateFete extends Component {
 
     _SubmitHandler=(values)=>{
         console.log(values);
-        if(validateFete(this)){
+        this.props.navigation.navigate("ChooseSalle")
+        /*if(validateFete(this)){
             const fete={
                 name : values.name,
                 age : values.age,
@@ -53,7 +54,7 @@ class FormCreateFete extends Component {
             });
         }else{
             alert("Attention, il faut remplir tous les champs")
-        }
+        }*/
     };
 
     handleDate(date) {

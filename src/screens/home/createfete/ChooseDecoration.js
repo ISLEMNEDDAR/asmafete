@@ -3,6 +3,9 @@ import {SafeAreaView, Text, View} from "react-native";
 import StyleCommon from "../../../constante/StyleCommon";
 import HeaderComponent from "../../../components/HedearCompenent";
 import Colors from "../../../constante/Colors";
+import ListSalle from "./formfete/LisTSalle";
+import {listDecoraton, listSalle} from "../../../constante/Data";
+import ListDecoration from "./formfete/ListDecoration";
 
 class ChooseDecoration extends Component {
     render() {
@@ -24,8 +27,8 @@ class ChooseDecoration extends Component {
                     }}
                     colorIconBack={Colors.$wihtePrimary}
                 />
-                <View style={StyleCommon.container}>
-                    <Text>fsfd</Text>
+                <View style={[StyleCommon.container, {marginHorizontal : "5%"},StyleCommon.margin10Horizontal]}>
+                    <ListDecoration listDecoration={listDecoraton} />
                 </View>
             </SafeAreaView>
         );

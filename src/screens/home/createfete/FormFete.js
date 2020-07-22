@@ -28,7 +28,7 @@ class FormFete extends Component {
                     colorIconBack={Colors.$wihtePrimary}
                 />
                 <View style={[StyleCommon.container,StyleCommon.margin10Vertical,StyleCommon.margin10Horizontal]}>
-                    <FormCreateFete/>
+                    <FormCreateFete navigation={this.props.navigation}/>
                 </View>
             </SafeAreaView>
         );

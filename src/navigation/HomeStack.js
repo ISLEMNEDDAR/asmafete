@@ -12,7 +12,6 @@ class HomeStack extends Component {
         const HomeList = createStackNavigator()
         return (
             <HomeList.Navigator screenOptions={{headerShown: false}} headerMode='none'>
-                <HomeList.Screen name={"ChooseSalle"} component={ChooseSalle}/>
                 <HomeList.Screen name={"Home"} component={Home}/>
                 <HomeList.Screen name={"CreateFeteStack"} component={FetesStack}/>
                 <HomeList.Screen name={"MesFetes"} component={MesFetes}/>
