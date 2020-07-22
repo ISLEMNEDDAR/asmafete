@@ -17,12 +17,9 @@ import {validateFete} from "../../../../utils/validationUtil";
 
 class FormCreateFete extends Component {
     state={
-        name : "",
-        age : "",
         wilaya : {name : WILAYA},
         type : {name : TYPE},
         date : {name : DATE},
-        nombreInvite : 0,
         heursFete : {name : HEURFETE},
         //
         currentInput : false,
@@ -86,7 +83,7 @@ class FormCreateFete extends Component {
     render() {
         return (
             <Formik
-                initialValues={{name : this.state.name,age : this.state.age,etablissement : this.state.etablissement,volume : this.state.volume}}
+                initialValues={{name : "",age : "",nombreInvite : ""}}
                 onSubmit={values => {this._SubmitHandler(values)}}
                 validationSchema={this.validationSchema}
             >

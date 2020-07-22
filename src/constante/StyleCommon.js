@@ -1,3 +1,5 @@
+import Colors from "./Colors";
+
 export default {
     container : {
         flex : 1,
@@ -42,5 +44,12 @@ export default {
     margintop : {
         marginTop : 10
     },
-
+    phoneInput : {
+        //marginTop : 20,
+        marginBottom : 10,
+        borderWidth : 1,
+        borderColor : Colors.$warm_gray,
+        padding : 18,
+        borderRadius : 2
+    },
 }
