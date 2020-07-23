@@ -17,4 +17,12 @@ export default class FeteApi {
             }
         }).then(response => response.data).catch(err => err)
     }
+
+    async createFete(token,fete){
+        return await axios.post(this.createFetePath,fete,{
+            headers : {
+                Authorization : token
+            }
+        }).then(response => response.data).catch(err => err)
+    }
 }

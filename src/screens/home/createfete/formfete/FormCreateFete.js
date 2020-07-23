@@ -14,13 +14,14 @@ import {MultiPickerMaterialDialog} from "react-native-material-dialog";
 import ButtonBLue from "../../../../components/ButtonBLue";
 import {connect} from "react-redux";
 import * as yup from "yup"
+import {feteApi} from "../../../../api/Api";
 
 class FormCreateFete extends Component {
     validationSchema = yup.object().shape({
         nombre_invite: yup.number()
             .label("Nombre d'invité")
             .required("le nombre d'invite ne doit pas être vide")
-            .max(1000, "le nombre de "),
+            .max(1000, "le nombre d'invite ne doit pas etre superieurs a 1000"),
     })
 
 
@@ -41,25 +42,40 @@ class FormCreateFete extends Component {
     }
 
     _SubmitHandler=(values)=>{
-        console.log(values);
-        //sthis.props.navigation.navigate("ChooseSalle")
-        /*if(validateFete(this)){
+        //s
+        console.log(this.state.wilaya.name)
+        console.log(this.state.type.name)
+        console.log(this.state.date.name)
+        console.log(this.state.heursFete.name)
+        if(this.state.wilaya.name !== WILAYA && this.state.type.name !== TYPE && this.state.date.name !== Date && this.state.heurs.length){
             const fete={
-                name : values.name,
-                age : values.age,
-                wilaya : this.state.wilaya.code,
-                type : this.state.type.code,
+                ...values,
+                wilaya : this.state.wilaya.name,
+                type : this.state.type.name,
                 date : this.state.date.name,
-                nombreInvite : values.nombreInvite,
-                heursFete : this.state.heursFete.name,
+                heurs_fete : this.state.heurs.map((heurs,i)=>{
+                    return heurs.label
+                }),
+                id_user : this.props.user.user.id
             };
             console.log(fete);
-            this.setState({
-                isLoading : true
-            });
+            feteApi.createFete(this.props.user.token,fete)
+                .then(response => {
+                    if(response.error){
+                        alert("there is a probleme")
+                        this.setState({
+                            isLoading : false
+                        })
+                    }else{
+                        this.setState({
+                            isLoading : false
+                        })
+                        this.props.navigation.navigate("ChooseSalle",{fete : response.data.fete._id})
+                    }
+                }).catch()
         }else{
             alert("Attention, il faut remplir tous les champs")
-        }*/
+        }
     };
 
     handleDate(date) {
@@ -71,7 +87,7 @@ class FormCreateFete extends Component {
     }
 
     getListHeurs = ()=>{
-        var spec = "Choisir une Heure";
+        let spec = "Choisir une Heure";
         const list = this.state.heurs;
         if(list.length>0){
             if(list.length === 1) return list[0].label;
@@ -88,10 +104,11 @@ class FormCreateFete extends Component {
             multiPickerSpecialiteVisible : false
         })
     };
+
     render() {
         return (
             <Formik
-                initialValues={{name : "",age : "",nombreInvite : ""}}
+                initialValues={{nombre_invite : ""}}
                 onSubmit={values => {this._SubmitHandler(values)}}
                 validationSchema={this.validationSchema}
             >
@@ -104,7 +121,6 @@ class FormCreateFete extends Component {
                                                 isTimePickerVisible : false
                                             })
                                             this.handleDate(date);
-
                                         }}
                                         onCancel={()=>{
                                             this.setState({
@@ -173,12 +189,12 @@ class FormCreateFete extends Component {
                                      }}
                         />
                         <OutlinedTextField
-                            name = {"nombreInvite"}
+                            name = {"nombre_invite"}
                             label={"nombre des Invites"}
-                            onChangeText = {formikProps.handleChange("nombreInvite")}
-                            value={formikProps.values.volume}
-                            onBLur={formikProps.handleBlur("nombreInvite")}
-                            error={formikProps.errors.volume && formikProps.touched.volume ? formikProps.errors.volume : ""}
+                            onChangeText = {formikProps.handleChange("nombre_invite")}
+                            value={formikProps.values.nombre_invite}
+                            onBLur={formikProps.handleBlur("nombre_invite")}
+                            error={formikProps.errors.nombre_invite && formikProps.touched.nombre_invite ? formikProps.errors.nombre_invite : ""}
                             inputContainerStyle={StyleCommon.margintop}
                             keyboardType="numeric"
                         />

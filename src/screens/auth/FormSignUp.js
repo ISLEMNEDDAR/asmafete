@@ -7,8 +7,6 @@ import {OutlinedTextField} from "react-native-material-textfield";
 import Colors from "../../constante/Colors";
 import {Icon} from "react-native-elements";
 import { RadioButton } from 'react-native-paper';
-import commonStyles from "../../constante/StyleCommon";
-import PhoneInput from "react-native-phone-input";
 import {choisirPicker} from "../../utils/PickerUtil";
 import {listWilaya, phoneRegex} from "../../constante/Data";
 import PickerInput from "../../components/PickerInput";
@@ -16,11 +14,8 @@ import SinglePicker from "../../components/SinglePicker";
 import ButtonBLue from "../../components/ButtonBLue";
 import * as yup from "yup"
 import {connect} from "react-redux";
-import LoadingScreen from "../../components/LoadingScreen";
-import {GET_USER_PENDING, loadingAuth, signupReject, signupSuccess} from "../../redux/actions/UserActions";
+import { loadingAuth, signupReject, signupSuccess} from "../../redux/actions/UserActions";
 import {userApi} from "../../api/Api";
-import axios from "axios";
-import api from "../../api/Api"
 class FormSignUp extends Component {
     validationSchema = yup.object().shape({
         nom : yup.string()
