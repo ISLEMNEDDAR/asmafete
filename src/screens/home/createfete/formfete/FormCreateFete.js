@@ -15,6 +15,7 @@ import ButtonBLue from "../../../../components/ButtonBLue";
 import {connect} from "react-redux";
 import * as yup from "yup"
 import {feteApi} from "../../../../api/Api";
+import LoadingScreen from "../../../../components/LoadingScreen";
 
 class FormCreateFete extends Component {
     validationSchema = yup.object().shape({
@@ -59,6 +60,9 @@ class FormCreateFete extends Component {
                 id_user : this.props.user.user.id
             };
             console.log(fete);
+            this.setState({
+                isLoading : true
+            })
             feteApi.createFete(this.props.user.token,fete)
                 .then(response => {
                     if(response.error){
@@ -70,7 +74,7 @@ class FormCreateFete extends Component {
                         this.setState({
                             isLoading : false
                         })
-                        this.props.navigation.navigate("ChooseSalle",{fete : response.data.fete._id})
+                        this.props.navigation.replace("ChooseSalle",{fete : response.data.fete._id})
                     }
                 }).catch()
         }else{
@@ -114,6 +118,7 @@ class FormCreateFete extends Component {
             >
                 {formikProps =>(
                     <View style={[StyleCommon.container,{backgroundColor : "#FFF",justifyContent : "center"}]}>
+                        <LoadingScreen hide={!this.state.isLoading}/>
                         <SinglePicker parent={this} parite={this.state.currentInput === "wilaya"}/>
                         <DateTimePicker isVisible={this.state.isTimePickerVisible}
                                         onConfirm={(date)=>{

@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {Image, Text, TouchableHighlight, View} from "react-native";
 import assets from "../../../../assets/assets";
 import Colors from "../../../../constante/Colors";
-import * as navigationRef from "../../../../navigation/RootNavigation";
+import NavigationService from "../../../../navigation/NavigationService";
 
 class Deco extends Component {
     Reserver = ()=>{
-        navigationRef.navigate("Home")
+        NavigationService.replace("Home")
     }
 
     render() {
