@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 //import {onPressOkPicker} from "../utils/PickerUtil";
 import {SinglePickerMaterialDialog} from "react-native-material-dialog";
 import Colors from "../constante/Colors";
+import {onPressOkPicker} from "../utils/PickerUtil";
 
 class SinglePicker extends Component {
     render() {

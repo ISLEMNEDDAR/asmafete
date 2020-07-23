@@ -36,3 +36,5 @@ export const listFetes = [
     {"id":"1","date":"15-08-2020","invite":300,"Wilaya": "Alger","commune": "Baraki","type":"mariage","isReserved":true,"heurs":"matin"},
     {"id":"1","date":"15-08-2020","invite":300,"Wilaya": "Alger","commune": "Baraki","type":"mariage","isReserved":false,"heurs":"matin"},
     {"id":"1","date":"15-08-2020","invite":300,"Wilaya": "Alger","commune": "Baraki","type":"mariage","isReserved":false,"heurs":"matin"}]
+
+export const phoneRegex = /^(00213|\+213|0)(5|6|7)[0-9]{8}$/

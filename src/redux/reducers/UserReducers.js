@@ -1,21 +1,34 @@
-import {GET_USER_PENDING} from "../actions/UserActions";
+import {GET_USER_PENDING, SIGN_UP_REJECT, SIGNUP_SUCCESS} from "../actions/UserActions";
 
 const INITIAL_STATE = {
     user: {},
     isLoading: false,
     logged: false,
-    alreadyIn: false,
-    signUpSucces: false,
     token: '',
 };
 
 export default (state = INITIAL_STATE, action) => {
+    console.log(action)
     switch (action.type) {
         case GET_USER_PENDING:
             return {
                 ...state,
                 isLoading: true,
+
             };
+        case SIGNUP_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                user : action.user,
+                token : action.token
+            };
+        case SIGN_UP_REJECT:
+            return {
+                ...state,
+                isLoading: false,
+            }
+
         default:
             return state;
     }

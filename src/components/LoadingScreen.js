@@ -1,8 +1,9 @@
 import React from 'react';
-import{
-    ActivityIndicator,
+import {
+    ActivityIndicator, Text,
     View,
 } from 'react-native'
+import Colors from "../constante/Colors";
 const LoadingScreen = ({hide} = this.props)=>{
     if(hide){
         return null
@@ -14,9 +15,11 @@ const LoadingScreen = ({hide} = this.props)=>{
             right : 0,
             bottom : 0,
             justifyContent : "center",
-            alignItems : "center"
+            alignItems : "center",
+            zIndex : 100,
+            elevation : 100
         }}>
-            <ActivityIndicator size="large"/>
+            <ActivityIndicator color={Colors.$redBootsrap} size="large"/>
         </View>)
     }
 };

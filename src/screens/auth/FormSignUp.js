@@ -10,65 +10,93 @@ import { RadioButton } from 'react-native-paper';
 import commonStyles from "../../constante/StyleCommon";
 import PhoneInput from "react-native-phone-input";
 import {choisirPicker} from "../../utils/PickerUtil";
-import {listWilaya} from "../../constante/Data";
+import {listWilaya, phoneRegex} from "../../constante/Data";
 import PickerInput from "../../components/PickerInput";
 import SinglePicker from "../../components/SinglePicker";
 import ButtonBLue from "../../components/ButtonBLue";
+import * as yup from "yup"
+import {connect} from "react-redux";
+import LoadingScreen from "../../components/LoadingScreen";
+import {GET_USER_PENDING, loadingAuth, signupReject, signupSuccess} from "../../redux/actions/UserActions";
+import {userApi} from "../../api/Api";
+import axios from "axios";
+import api from "../../api/Api"
 class FormSignUp extends Component {
+    validationSchema = yup.object().shape({
+        nom : yup.string()
+            .label("Nom complet")
+            .required("le nom ne doit pas être vide"),
+        prenom : yup.string()
+            .label("prenom")
+            .required("Le prénom ne doit pas être vide "),
+        email : yup.string()
+            .label("Email")
+            .email("Entrer un email valide")
+            .required("l'email ne doit pas être vide"),
+        password : yup.string()
+            .label('Mot de Passe')
+            .required("le mot de passe ne doit pas etre vide")
+            .min(8,"Le mot de passe doit être au minimum 8 caractère"),
+        passwordConf: yup.string()
+            .label("Confirmer mot de passe")
+            .required("confirmer le mot de passe ne doit pas être vide")
+            .oneOf([yup.ref('password'),null],"les deux mots de passe doivent être les même"),
+        phone: yup.string().matches(phoneRegex,"le numero de telepohone n'est pas valide")
+    });
+
     state={
         wilaya : {name : WILAYA},
         sexe : "",
-
         //
         passwordVisibility : true,
         passwordConfVisibility : true,
-
-
         currentInput : false,
         listPicker : [],
         singlePickerVisible : false,
         singlePickerSelectedItem : {} ,
     }
 
-    _SubmitHandler=(values)=>{
-        console.log(values);
-        this.props.navigation.navigate("ChooseSalle")
-        /*if(validateFete(this)){
-            const fete={
-                name : values.name,
-                age : values.age,
-                wilaya : this.state.wilaya.code,
-                type : this.state.type.code,
-                date : this.state.date.name,
-                nombreInvite : values.nombreInvite,
-                heursFete : this.state.heursFete.name,
+    _SubmitHandler=(values)=> {
+        if (this.state.sexe !== "" && this.state.wilaya.name !== WILAYA ) {
+            const user = {
+                ...values,
+                wilaya: this.state.wilaya.name,
+                sexe: this.state.sexe.toLowerCase()
             };
-            console.log(fete);
-            this.setState({
-                isLoading : true
-            });
-        }else{
-            alert("Attention, il faut remplir tous les champs")
-        }*/
-    };
+            this.props.loadingSignup()
+            userApi.signup(user).then(response=>{
+                console.log(response)
+                if(response.error){
+                    alert(response.data.message)
+                    this.props.signupReject()
+                }else{
+                    this.props.signupSucces(response.user,response.token)
+                    console.log(this.props.user)
+                    this.props.navigation.replace("HomeStack")
+                }
+            })
+
+        } else {
+            alert("Attention, il faut remplir tous les champs !")
+        }
+    }
     render() {
         return (
             <Formik
-                initialValues={{name : "",prenom : "",age : "",email : "",phone :""}}
+                initialValues={{nom : "islem",prenom : "neddar",age : 23,email : "fn_islem@esi.dz",phone :"0556565656",password :"123456789",passwordConf :"123456789"}}
                 onSubmit={values => {this._SubmitHandler(values)}}
                 validationSchema={this.validationSchema}
             >
                 {formikProps =>(
-
                     <ScrollView style={[StyleCommon.container,{backgroundColor : "#FFF"}]} showsVerticalScrollIndicator={false}>
-                        <SinglePicker parent={this} parite={this.state.currentInput === "pays"}/>
+                        <SinglePicker parent={this} parite={this.state.currentInput === "wilaya"}/>
                         <OutlinedTextField
-                            name = {"name"}
+                            name = {"nom"}
                             label={"Nom"}
-                            onChangeText = {formikProps.handleChange("name")}
-                            value={formikProps.values.name}
-                            onBLur={formikProps.handleBlur("name")}
-                            error={formikProps.errors.name && formikProps.touched.name ? formikProps.errors.name : ""}
+                            onChangeText = {formikProps.handleChange("nom")}
+                            value={formikProps.values.nom}
+                            onBLur={formikProps.handleBlur("nom")}
+                            error={formikProps.errors.nom && formikProps.touched.nom ? formikProps.errors.nom : ""}
                             inputContainerStyle={StyleCommon.margintop}
                         />
                         <OutlinedTextField
@@ -143,11 +171,11 @@ class FormSignUp extends Component {
                             >
                                 <View style={{flexDirection : "row"}}>
                                     <View style={{flexDirection : "row",alignItems : "center",width : "50%"}}>
-                                        <RadioButton value="homme" color={Colors.$bluePrimary}/>
+                                        <RadioButton value="h" color={Colors.$bluePrimary}/>
                                         <Text>Homme</Text>
                                     </View>
                                     <View style={{flexDirection : "row",alignItems : "center"}}>
-                                        <RadioButton value="femme" color={Colors.$bluePrimary}/>
+                                        <RadioButton value="f" color={Colors.$bluePrimary}/>
                                         <Text>Femme</Text>
                                     </View>
                                 </View>
@@ -180,6 +208,7 @@ class FormSignUp extends Component {
                                 fontSize={14}
                                 onPress={formikProps.handleSubmit}/>
                         </View>
+
                     </ScrollView>
                 )}
 
@@ -188,4 +217,17 @@ class FormSignUp extends Component {
     }
 }
 
-export default FormSignUp;
+const mapDispatchtoProps = dispatch=>{
+    return{
+        loadingSignup : () => {dispatch(loadingAuth())},
+        signupSucces: (user) =>{dispatch(signupSuccess(user))},
+        signupReject : () =>{dispatch(signupReject())}
+    }
+}
+
+export default connect(
+    state=>({
+        user : state.user,
+    }),
+    mapDispatchtoProps
+)(FormSignUp)
