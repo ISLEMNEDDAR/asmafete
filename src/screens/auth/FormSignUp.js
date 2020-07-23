@@ -70,7 +70,7 @@ class FormSignUp extends Component {
                     alert(response.data.message)
                     this.props.signupReject()
                 }else{
-                    this.props.signupSucces(response.user,response.token)
+                    this.props.signupSucces(response.data.user,response.data.token)
                     console.log(this.props.user)
                     this.props.navigation.replace("HomeStack")
                 }

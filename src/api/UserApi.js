@@ -11,11 +11,17 @@ export class UserApi{
     }
 
     login(user){
-
+        return axios.post(this.pathLogin,user)
+            .then(response =>{
+                return response.data
+            })
+            .catch(err =>{
+                return err
+            })
     }
 
     signup(user){
-        return axios.post(api+"/user/signup",user)
+        return axios.post(this.pathSignuP,user)
             .then(response =>{
                 return response.data
             })

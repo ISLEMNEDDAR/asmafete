@@ -11,6 +11,10 @@ import Colors from "../../constante/Colors";
 import {Icon} from "react-native-elements";
 import assets from "../../assets/assets";
 import {OutlinedTextField} from "react-native-material-textfield";
+import {connect} from "react-redux";
+import LoadingScreen from "../../components/LoadingScreen";
+import {userApi} from "../../api/Api";
+import {loadingAuth, signupReject, signupSuccess} from "../../redux/actions/UserActions";
 class Login extends Component {
     validationSchema = yup.object().shape({
         email: yup
@@ -32,11 +36,19 @@ class Login extends Component {
     handleSubmit = values => {
         if (values.email.length > 0 && values.password.length > 0){
             console.log("login")
-            this.props.navigation.navigate("HomeStack")
-            /*this.props.login({
-                email: values.email,
-                password: values.password,
-            });*/
+            const user = {
+                ...values
+            }
+            this.props.loadingLogin()
+            userApi.login(user)
+                .then(response=>{
+                    if(response.error){
+                        alert(response.data.messages)
+                        this.props.loginReject()
+                    }else{
+                        this.props.loginSuccess(response.data.user,response.data.token)
+                    }
+                })
         }
         else alert('error in login');
     };
@@ -44,6 +56,7 @@ class Login extends Component {
     render() {
         return (
             <SafeAreaView style={StyleCommon.container}>
+
                     <View style={StyleCommon.container}>
                         <Formik initialValues={{email: '', password: ''}}
                                 onSubmit={values => {
@@ -109,4 +122,18 @@ class Login extends Component {
         );
     }
 }
-export default Login;
+
+const mapDispatchtoProps = dispatch=>{
+    return{
+        loadingLogin : () => {dispatch(loadingAuth())},
+        loginSuccess: (user) =>{dispatch(signupSuccess(user))},
+        loginReject : () =>{dispatch(signupReject())}
+    }
+}
+
+export default connect(
+    state =>({
+        user : state.user
+    }),
+    mapDispatchtoProps
+)(Login);

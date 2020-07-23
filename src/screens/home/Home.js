@@ -4,6 +4,9 @@ import {Text, View, Button, Image} from "react-native";
 import ButtonBLue from "../../components/ButtonBLue";
 import StyleCommon from "../../constante/StyleCommon";
 import assets from "../../assets/assets";
+import {connect} from "react-redux";
+import {logout} from "../../redux/actions/UserActions";
+import {navigationRef} from "../../navigation/RootNavigation";
 class Login extends Component {
 
     goCreateFete = ()=>{
@@ -13,7 +16,7 @@ class Login extends Component {
         this.props.navigation.navigate("MesFetes")
     }
     Logout = ()=>{
-        this.props.navigation.replace("Login")
+        this.props.logout()
     }
     SallesFetes = ()=>{
         this.props.navigation.navigate("Profile")
@@ -71,4 +74,16 @@ class Login extends Component {
         );
     }
 }
-export default Login;
+
+const mapDispatchtoprops = dispatch=>{
+    return{
+        logout : ()=>{dispatch(logout())}
+    }
+}
+
+export default connect(
+    state=>({
+
+    }),
+    mapDispatchtoprops
+)(Login);

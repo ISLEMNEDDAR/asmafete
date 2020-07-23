@@ -14,12 +14,15 @@ import 'react-native-gesture-handler';
 import {NavigationContainer} from "@react-navigation/native";
 import RootStack from "./src/navigation/RootStack";
 import {navigationRef} from "./src/navigation/RootNavigation";
+import NavigationService from "./src/navigation/NavigationService";
 class App extends Component{
   render(){
     return(
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            <NavigationContainer ref={navigationRef}>
+            <NavigationContainer ref={navigatorRef => {
+                NavigationService.setTopLevelNavigator(navigatorRef);
+            }}>
                 <RootStack/>
             </NavigationContainer>
           </PersistGate>
