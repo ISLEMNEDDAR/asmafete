@@ -12,9 +12,18 @@ import DateTimePicker from "react-native-modal-datetime-picker";
 import Colors from "../../../../constante/Colors";
 import {MultiPickerMaterialDialog} from "react-native-material-dialog";
 import ButtonBLue from "../../../../components/ButtonBLue";
-
+import {connect} from "react-redux";
+import * as yup from "yup"
 
 class FormCreateFete extends Component {
+    validationSchema = yup.object().shape({
+        nombre_invite: yup.number()
+            .label("Nombre d'invité")
+            .required("le nombre d'invite ne doit pas être vide")
+            .max(1000, "le nombre de "),
+    })
+
+
     state={
         wilaya : {name : WILAYA},
         type : {name : TYPE},
@@ -33,7 +42,7 @@ class FormCreateFete extends Component {
 
     _SubmitHandler=(values)=>{
         console.log(values);
-        this.props.navigation.navigate("ChooseSalle")
+        //sthis.props.navigation.navigate("ChooseSalle")
         /*if(validateFete(this)){
             const fete={
                 name : values.name,
@@ -87,14 +96,15 @@ class FormCreateFete extends Component {
                 validationSchema={this.validationSchema}
             >
                 {formikProps =>(
-                    <View style={[StyleCommon.container,{backgroundColor : "#FFF"}]}>
-                        <SinglePicker parent={this} parite={this.state.currentInput === "pays"}/>
+                    <View style={[StyleCommon.container,{backgroundColor : "#FFF",justifyContent : "center"}]}>
+                        <SinglePicker parent={this} parite={this.state.currentInput === "wilaya"}/>
                         <DateTimePicker isVisible={this.state.isTimePickerVisible}
                                         onConfirm={(date)=>{
-                                            this.handleDate(date);
                                             this.setState({
                                                 isTimePickerVisible : false
                                             })
+                                            this.handleDate(date);
+
                                         }}
                                         onCancel={()=>{
                                             this.setState({
@@ -117,25 +127,25 @@ class FormCreateFete extends Component {
                             colorAccent={Colors.$bluePrimary}
                             cancelLabel={"Annuler"}
                         />
-                        <OutlinedTextField
-                            name = {"name"}
+                        {/*<OutlinedTextField
+                            name={"name"}
                             label={"Nom"}
-                            onChangeText = {formikProps.handleChange("name")}
+                            onChangeText={formikProps.handleChange("name")}
                             value={formikProps.values.name}
                             onBLur={formikProps.handleBlur("name")}
                             error={formikProps.errors.name && formikProps.touched.name ? formikProps.errors.name : ""}
                             inputContainerStyle={StyleCommon.margintop}
                         />
-                        <OutlinedTextField
+                            <OutlinedTextField
                             name = {"age"}
                             label={"Age"}
                             onChangeText = {formikProps.handleChange("age")}
-                            value={formikProps.values.volume}
+                            value={formikProps.values.age}
                             onBLur={formikProps.handleBlur("age")}
-                            error={formikProps.errors.volume && formikProps.touched.volume ? formikProps.errors.volume : ""}
+                            error={formikProps.errors.age && formikProps.touched.age ? formikProps.errors.age : ""}
                             inputContainerStyle={StyleCommon.margintop}
                             keyboardType="numeric"
-                        />
+                            />*/}
                         <PickerInput text={this.state.wilaya.name}
                                      height={55}
                                      backgroundColor={"white"}
@@ -202,4 +212,9 @@ class FormCreateFete extends Component {
     }
 }
 
-export default FormCreateFete;
+export default connect(
+    state=>({
+        user : state.user
+    }),
+    {}
+)(FormCreateFete);

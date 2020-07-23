@@ -46,6 +46,7 @@ class Login extends Component {
                         alert(response.data.messages)
                         this.props.loginReject()
                     }else{
+                        console.log(response)
                         this.props.loginSuccess(response.data.user,response.data.token)
                     }
                 })
@@ -56,7 +57,7 @@ class Login extends Component {
     render() {
         return (
             <SafeAreaView style={StyleCommon.container}>
-
+                    <LoadingScreen hide={!this.props.user.isLoading}/>
                     <View style={StyleCommon.container}>
                         <Formik initialValues={{email: '', password: ''}}
                                 onSubmit={values => {
@@ -126,7 +127,7 @@ class Login extends Component {
 const mapDispatchtoProps = dispatch=>{
     return{
         loadingLogin : () => {dispatch(loadingAuth())},
-        loginSuccess: (user) =>{dispatch(signupSuccess(user))},
+        loginSuccess: (user,token) =>{dispatch(signupSuccess(user,token))},
         loginReject : () =>{dispatch(signupReject())}
     }
 }

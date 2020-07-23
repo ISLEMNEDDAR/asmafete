@@ -3,6 +3,17 @@ import {Text, TouchableHighlight, View} from "react-native";
 import Colors from "../../../constante/Colors";
 
 class Fete extends Component {
+    consoleHeurs = (heursFete)=>{
+        let stringHeurs = "";
+        if(heursFete.length>0){
+            stringHeurs += heursFete[0];
+            for (let i=1;i<heursFete.length;i++){
+                stringHeurs += " ,"+heursFete[i];
+            }
+        }
+        return stringHeurs;
+    }
+
     render() {
         const fete = this.props.fete
         return (
@@ -10,13 +21,12 @@ class Fete extends Component {
                 <View style={{margin : 10,flex : 0.5}}>
                     <Text>Type Fete : <Text>{fete.type}</Text></Text>
                     <Text>Date : <Text>{fete.date}</Text></Text>
-                    <Text>Nombre des Invité : <Text>{fete.invite}</Text></Text>
-                    <Text>Wilaya : <Text>{fete.Wilaya}</Text></Text>
-                    <Text>Commune : <Text>{fete.commune}</Text></Text>
-                    <Text>Heurs : <Text>{fete.commune}</Text></Text>
+                    <Text>Nombre des Invité : <Text>{fete.nombre_invite}</Text></Text>
+                    <Text>Wilaya : <Text>{fete.wilaya}</Text></Text>
+                    <Text>Heurs : <Text>{this.consoleHeurs(fete.heurs_fete)}</Text></Text>
                 </View>
                 <View style={{flex : 0.5,alignItems : "center",justifyContent : "center"}}>
-                    {!fete.isReserved ? (<TouchableHighlight
+                    <TouchableHighlight
                         style={{
                             borderStyle: "solid",
                             borderWidth: 1,
@@ -27,9 +37,7 @@ class Fete extends Component {
                         onPress={this.Reserver}
                     >
                         <Text style={{fontSize: 16, fontWeight: "bold"}}>Réserver</Text>
-                    </TouchableHighlight>) : (
-                        null
-                    )}
+                    </TouchableHighlight>
                 </View>
             </View>
         );

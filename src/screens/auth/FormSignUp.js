@@ -33,6 +33,10 @@ class FormSignUp extends Component {
             .label("Email")
             .email("Entrer un email valide")
             .required("l'email ne doit pas être vide"),
+        age: yup.number()
+            .required("Enter Votre age")
+            .min(18, "il faut que tu aura plus de 18 ans")
+            .max(100, "il faut que tu aura moins de 100 ans"),
         password : yup.string()
             .label('Mot de Passe')
             .required("le mot de passe ne doit pas etre vide")
@@ -220,7 +224,7 @@ class FormSignUp extends Component {
 const mapDispatchtoProps = dispatch=>{
     return{
         loadingSignup : () => {dispatch(loadingAuth())},
-        signupSucces: (user) =>{dispatch(signupSuccess(user))},
+        signupSucces: (user,token) =>{dispatch(signupSuccess(user,token))},
         signupReject : () =>{dispatch(signupReject())}
     }
 }
