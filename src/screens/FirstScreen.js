@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {SafeAreaView} from "react-native-safe-area-context";
-import {Text, View,Image} from "react-native";
+import {Text, View, Image, ImageBackground} from "react-native";
 import assets from "../assets/assets";
 import TextUnderline from "../components/TextUnderline";
+import Colors from "../constante/Colors";
 
 class FirstScreen extends Component {
     goLogin = ()=>{
@@ -17,21 +18,22 @@ class FirstScreen extends Component {
     render() {
         return (
             <SafeAreaView style={styles.container}>
-                <View style={styles.container}>
+                <ImageBackground source={assets.first.backgroundImage} style={[styles.container,{width : "100%",height : "100%",resize : "stretch"}]}>
                     <View style={styles.containerApp}>
                         <View style={styles.containerImage}>
                             <Image source={assets.first.logo} style={styles.logo}/>
                         </View>
                         <View style={styles.containerText}>
                             <Text style={styles.textLogo}> Asma Fete</Text>
-                            <Text >Réserver votre Salle des fete en un clic</Text>
+                            <Text style={{flex : 0.10}}>Réserver votre Salle des fete en un clic</Text>
+                            <Image source={assets.first.salleBackground} style={{flex: 0.8,resizeMode : "stretch"}}/>
                         </View>
                     </View>
                     <View style={styles.containerAuth}>
                         <TextUnderline text={"conncter-vous ?"}  onPress={this.goLogin}/>
                         <TextUnderline text={"inscrevez-vous ?"} onPress={this.toRegister}/>
                     </View>
-                </View>
+                </ImageBackground>
             </SafeAreaView>
         );
     }
@@ -59,7 +61,7 @@ const styles = {
     },
     containerText : {
       flex : 1,
-        alignItems : "center"
+        alignItems : "center",
     },
     logo:{
         height: 200,
@@ -67,6 +69,7 @@ const styles = {
         borderRadius : 200
     },
     textLogo:{
+        flex : 0.10,
         fontSize: 25,
         fontWeight : "bold"
     },

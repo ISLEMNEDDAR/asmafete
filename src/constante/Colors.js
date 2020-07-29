@@ -11,4 +11,5 @@ export default {
     $blueGradient1: '#0B3468',
     $blueGradient2: '#1668D0',
     $redBootsrap: '#dc3545',
+    $pink : "#FF1493"
 };

@@ -13,10 +13,11 @@ export class UserApi{
     login(user){
         return axios.post(this.pathLogin,user)
             .then(response =>{
+                console.log(response)
                 return response.data
             })
             .catch(err =>{
-                return err
+                return err.response.data
             })
     }
 
@@ -26,7 +27,7 @@ export class UserApi{
                 return response.data
             })
             .catch(err=>{
-                return err
+                return err.response.data
             })
     }
 

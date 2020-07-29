@@ -10,12 +10,16 @@ class Salle extends Component {
         NavigationService.replace("ChooseDecoration")
     }
 
+    returnSalleImage = ()=>{
+        const index = Math.floor(Math.random() * assets.salle.length)
+        return assets.salle[index]
+    }
     render() {
         const salle = this.props.salle
         return (
             <View style={{height : 300,margin : 3}}>
                 <View style={{flex : 0.6}}>
-                    <Image source={assets.first.logo} style={styles.imageStyle}/>
+                    <Image source={this.returnSalleImage()} style={styles.imageStyle}/>
                     <View style={styles.PriceStyle}>
                         <Text style={styles.PriceTextStyle}>{salle.prix} Million</Text>
                     </View>

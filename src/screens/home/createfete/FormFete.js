@@ -11,8 +11,8 @@ class FormFete extends Component {
         return (
             <SafeAreaView style={[StyleCommon.container,{backgroundColor : "#FFF"}]}>
                 <HeaderComponent
-                    color1={Colors.$blueGradient1}
-                    color2={Colors.$blueGradient2}
+                    color1={Colors.$pink}
+                    color2={Colors.$pink}
                     height={65}
                     iconCenter={"tint"}
                     sizeIconCenter={30}

@@ -48,7 +48,7 @@ const styles = {
         borderRadius : 50,
         justifyContent : "center",
         alignItems : "center",
-        backgroundColor : Colors.$bluePrimary,
+        backgroundColor : Colors.$pink,
     },
     text : {
         color: Colors.$wihtePrimary,

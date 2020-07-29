@@ -9,12 +9,16 @@ class Deco extends Component {
         NavigationService.replace("Home")
     }
 
+    returnSalleImage = ()=>{
+        const index = Math.floor(Math.random() * assets.salle.length)
+        return assets.salle[index]
+    }
     render() {
         const deco = this.props.deco
         return (
             <View style={{height : 120,margin : 4,flexDirection : "row",borderRadius : 20,elevation : 2,backgroundColor : "#FFF"}}>
                 <View style={{flex : 0.4,}}>
-                    <Image source={assets.first.logo} style={{height : 120,width : "100%" ,resizeMode : "stretch",borderTopLeftRadius : 100,borderBottomLeftRadius : 100}}/>
+                    <Image source={this.returnSalleImage()} style={{height : 120,width : "100%" ,resizeMode : "stretch",borderTopLeftRadius : 100,borderBottomLeftRadius : 100}}/>
                 </View>
                 <View style={{flex : 0.6,marginHorizontal : "5%"}}>
                     <View style={{flex : 0.5,justifyContent : "center"}}>

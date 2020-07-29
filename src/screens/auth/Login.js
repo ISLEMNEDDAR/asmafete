@@ -32,6 +32,9 @@ class Login extends Component {
     state = {
         passwordVisibility: true,
     };
+    componentDidMount() {
+        this.props.loginReject()
+    }
 
     handleSubmit = values => {
         if (values.email.length > 0 && values.password.length > 0){
@@ -42,8 +45,9 @@ class Login extends Component {
             this.props.loadingLogin()
             userApi.login(user)
                 .then(response=>{
+                    console.log(response)
                     if(response.error){
-                        alert(response.data.messages)
+                        alert(response.data.message)
                         this.props.loginReject()
                     }else{
                         console.log(response)

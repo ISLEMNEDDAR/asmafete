@@ -15,7 +15,7 @@ export default class FeteApi {
             headers : {
                 Authorization : token
             }
-        }).then(response => response.data).catch(err => err)
+        }).then(response => response.data).catch(err => err.response.data)
     }
 
     async createFete(token,fete){
@@ -23,6 +23,6 @@ export default class FeteApi {
             headers : {
                 Authorization : token
             }
-        }).then(response => response.data).catch(err => err)
+        }).then(response => response.data).catch(err => err.response.data)
     }
 }
