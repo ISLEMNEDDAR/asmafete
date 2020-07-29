@@ -1,6 +1,3 @@
-export const ListSang = [
-    {name : "A+"},
-];
 export const PageTaille = 700;
 export const ScreenTaille = 1250;
 export const LIST = [
