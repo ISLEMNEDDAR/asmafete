@@ -6,7 +6,7 @@ import StyleCommon from "../../constante/StyleCommon";
 import assets from "../../assets/assets";
 import {connect} from "react-redux";
 import {logout} from "../../redux/actions/UserActions";
-import {navigationRef} from "../../navigation/RootNavigation";
+import {navigationRef} from "../../navigation/utils/RootNavigation";
 class Login extends Component {
 
     goCreateFete = ()=>{

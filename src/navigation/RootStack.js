@@ -13,7 +13,7 @@ class RootStack extends Component {
         return (
             <RootList.Navigator screenOptions={{headerShown: false}} headerMode='none' initialRouteName ="Register" >
                 {this.props.user.logged ? (
-                    <RootList.Screen name={"HomeStack"} component={HomeStack}/>
+                        <RootList.Screen name={"HomeStack"} component={HomeStack}/>
                     ) : (
                         <RootList.Screen name={"AuthScreen"} component={AuthStack}/>
                     )

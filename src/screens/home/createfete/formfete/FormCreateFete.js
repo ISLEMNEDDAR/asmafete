@@ -25,7 +25,6 @@ class FormCreateFete extends Component {
             .max(1000, "le nombre d'invite ne doit pas etre superieurs a 1000"),
     })
 
-
     state={
         wilaya : {name : WILAYA},
         type : {name : TYPE},

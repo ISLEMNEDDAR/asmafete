@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Image, Text, TouchableHighlight, View} from "react-native";
 import assets from "../../../../assets/assets";
 import Colors from "../../../../constante/Colors";
-import NavigationService from "../../../../navigation/NavigationService";
+import NavigationService from "../../../../navigation/utils/NavigationService";
 
 class Salle extends Component {
 

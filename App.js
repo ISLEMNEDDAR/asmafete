@@ -13,8 +13,8 @@ import {PersistGate} from "redux-persist/integration/react";
 import 'react-native-gesture-handler';
 import {NavigationContainer} from "@react-navigation/native";
 import RootStack from "./src/navigation/RootStack";
-import {navigationRef} from "./src/navigation/RootNavigation";
-import NavigationService from "./src/navigation/NavigationService";
+import {navigationRef} from "./src/navigation/utils/RootNavigation";
+import NavigationService from "./src/navigation/utils/NavigationService";
 class App extends Component{
   render(){
     return(
